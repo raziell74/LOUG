@@ -1,7 +1,6 @@
-# LOUG
+# LOUG - Load Order Update Guard
 
-Load Order Update Guard. A flexible MO2 python plugin that will warn against save breaking changes to ESL load order changes.
-
+A flexible MO2 python plugin that will warn against save breaking changes to ESL load order changes.
 LOUG will help protect from changes to ESL's from mod updates or new mods that would force the load order of your ESL flagged plugins to change. 
 
 ## Why is ESL load order important?
