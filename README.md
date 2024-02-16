@@ -16,14 +16,30 @@ referenced FormID and the id in the save is now pointing to a giant stone archwa
 
 In your MO2 installation directory, drop the LOUG files into your /plugins folder. 
 
-LOUG comes packaged with a slightly customized version of BETH Structures which it uses to decode the header of an ESP/ESM/ESL to determine the flags and types of changes contained in the plugin.
-
-The Beth Structures library was altered so that it will not read in the plugins content in its entirety but insted only read in the specified data ranges to get header information. This was a needed optimization as some plugin sizes could cause a very long read time, and LOUG needs to be snappy and quick.
-
 ## Usage
 
 The first time MO2 is loaded with LOUG the plugin load order is parsed and calculated. When the game is launched from MO2, LOUG will assume the load order is stable and save it to memory. 
 After that any changes to ESL load order that would cause save game corruption will be sent to MO2 as a warning. 
+
+## Beth Structs
+
+LOUG comes packaged with a slightly customized version of BETH Structures which it uses to decode the header of an ESP/ESM/ESL to determine the flags and types of changes contained in the plugin.
+
+The Beth Structures library was altered so that it will not read in the plugins content in its entirety but insted only read in the specified data ranges to get header information. This was a needed optimization as some plugin sizes could cause a very long read time, and LOUG needs to be snappy and quick.
+
+The primary usage of Beth Structs is to detect the types of changes an ESL introduces to determine the lowest possible priority ESL that can be moved. If you have several ESL plugins at the bottom of your load order that do not add any new forms to the game and only update forms from other plugins (like patches) or the ESl is just an empty dummy plugin that adds nothing to the game engine. These types of plugins can remain chagne their load order without any corruption being intoduced to your save file. Because of this it is important to keep these kinds of plugins at the bottom of your load order so the patchs to forms can properly be applied. LOUG will find the lowest priority ESL that adds new forms to the game so that adding new plugins or moving around plugins under the lowest priority ESl can be done without reporting false positive warnings to MO2. 
+
+As an example say you have 6 ESl flagged plugins at the bottom of your load order, some 3 are patches, 1 is an empty dummy plugin, 1 is a normal esp without an ESL flag and one adds a new armor to the game.
+
+- DummyPlugin.esp [esl]
+- New Armor.esp [esl]
+- Patch1.esp [esl]
+- NormalPlugin.esp
+- NormalPluginPatch.esp [esl]
+- SuperPatch.esp [esl]
+
+In this case LOUG will warn if any new ESL plugins are placed above the "New Armor.esp" plugin. Because the patches do not add nay new forms to the game they can be moved lower without causing any damage to your game save. 
+This is also a good example because Normal non-esl plugins can be moved anywhere in your load order without any threat of save corrption. So you could move the "NormalPlugin.esp" above "DummyPlugin.esp" and LOUG will not report any issues.
 
 # Types of ESL issues
 
