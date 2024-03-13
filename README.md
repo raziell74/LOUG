@@ -3,6 +3,10 @@
 A flexible MO2 python plugin that will warn against save breaking changes to ESL load order changes.
 LOUG will help protect from changes to ESL's from mod updates or new mods that would force the load order of your ESL flagged plugins to change. 
 
+## Installation
+
+In your MO2 installation directory, drop the LOUG files into your /plugins folder. 
+
 ## Why is ESL load order important?
 
 If an ESL flagged plugin adds new items or forms to the game these form ids are baked into your save file using the ESLs current Mod Index.
@@ -10,10 +14,6 @@ Because of how these FormIDs are managed, any changes to the ESL plugins Mod Ind
 Changes to your load order of ESL plugins can cause the game to attempt load the wrong data for a FormID and corrupt your save.
 Instead of equipping your fancy modded princess peach axe, you might crash your game instead because the game has the wrong
 referenced FormID and the id in the save is now pointing to a giant stone archway from a completely unrelated mod.
-
-## Installation
-
-In your MO2 installation directory, drop the LOUG files into your /plugins folder. 
 
 ## Usage
 
