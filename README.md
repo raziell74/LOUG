@@ -5,7 +5,11 @@ LOUG will help protect from changes to ESL's from mod updates or new mods that w
 
 ## Installation
 
-In your MO2 installation directory, extract the LOUG into the base directory of your MO2 folder. 
+In your MO2 installation directory, extract the LOUG into the base directory of your MO2 folder.
+
+## Updating the "stable" load order
+
+Everytime you run skyrim LOUG will save the load order as the current 'stable' load order. So if you are getting warnings and they aren't valid (this is still in alpha after all) running the game will reset and assume you are fine with your load order as is. 
 
 ## Why is ESL load order important?
 
