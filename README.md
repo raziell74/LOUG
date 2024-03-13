@@ -5,7 +5,7 @@ LOUG will help protect from changes to ESL's from mod updates or new mods that w
 
 ## Installation
 
-In your MO2 installation directory, drop the LOUG files into your /plugins folder. 
+In your MO2 installation directory, extract the LOUG into the base directory of your MO2 folder. 
 
 ## Why is ESL load order important?
 
